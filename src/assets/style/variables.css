@@ -1,0 +1,17 @@
+:root {
+  /* colors */
+  --main-color: #3c5280;
+  --sub-color: #272b33;
+  --title-color: #ebf0fa;
+  --text-color: rgb(128, 128, 128);
+  --active-color: aqua;
+
+  /* fonts */
+  --title-font: "Zen Kurenaido", sans-serif;
+  --text-font: "Poiret One", cursive;
+
+  /* vars */
+  --title-size: 36px;
+  --subtitle-sise: 24px;
+  --text-size: 18px;
+}

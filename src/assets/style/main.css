@@ -1,0 +1,45 @@
+body {
+  color: var(--text-color);
+  font-family: var(--text-font);
+  font-size: var(--text-size);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+ul,
+li,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--title-color);
+  font-family: var(--title-font);
+  font-size: var(--title-size);
+}
+h1,
+h2 {
+  font-size: var(--title-size);
+}
+h3,
+h4 {
+  font-size: var(--subtitle-size);
+}
+a {
+  color: var(--title-color);
+  text-decoration: none;
+}
+
+.active {
+  color: var(--active-color);
+}
