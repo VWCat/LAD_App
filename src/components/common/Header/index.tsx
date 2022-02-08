@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledHeader = styled.header`
@@ -29,24 +30,26 @@ const Header: React.FC = () => {
   return (
     <StyledHeader>
       <StyledLogo>
-        <img src="/logo.png" alt="logo" />
+        <NavLink to="/">
+          <img src="/logo.png" alt="logo" />
+        </NavLink>
       </StyledLogo>
       <StyledNav>
         <ul>
           <li>
-            <a href="/">Домой</a>
+            <NavLink to="/">Домой</NavLink>
           </li>
           <li>
-            <a href="/">Туда</a>
+            <NavLink to="/1">Туда</NavLink>
           </li>
           <li>
-            <a href="/">Сюда</a>
+            <NavLink to="/2">Сюда</NavLink>
           </li>
           <li>
-            <a href="/">Ещё тудее</a>
+            <NavLink to="/3">Ещё тудее</NavLink>
           </li>
           <li>
-            <a href="/">Ещё сюдее</a>
+            <NavLink to="/4">Ещё сюдее</NavLink>
           </li>
         </ul>
       </StyledNav>

@@ -22,7 +22,7 @@ const StyledNav = styled.nav`
   li {
     border: solid black 1px;
     margin: 3px 0;
-    padding 2px
+    padding: 2px;
   }
 `;
 

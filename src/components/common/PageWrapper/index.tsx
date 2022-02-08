@@ -1,4 +1,5 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 import Footer from "../Footer";
 import Header from "../Header";
@@ -31,22 +32,22 @@ const StyledContainer = styled.div`
   flex-grow: 1;
 `;
 
+const StyledOutlet = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 150px);
+  justify-content: "center";
+`;
+
 const PageWrapper: React.FC = () => {
   return (
     <StyledPage>
       <Header />
       <StyledContent>
         <StyledContainer>
-          <div
-            style={{
-              display: "flex",
-              width: "calc(100% - 150px)",
-              justifyContent: "center",
-            }}
-          >
-            <h1>Здесь будет какой-нибудь контент</h1>
-          </div>
-
+          <StyledOutlet>
+            <Outlet />
+          </StyledOutlet>
           <SideBar />
         </StyledContainer>
       </StyledContent>
