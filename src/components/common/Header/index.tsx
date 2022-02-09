@@ -40,7 +40,7 @@ const Header: React.FC = () => {
             <NavLink to="/">Домой</NavLink>
           </li>
           <li>
-            <NavLink to="/1">Туда</NavLink>
+            <NavLink to="/memes">Мемасики</NavLink>
           </li>
           <li>
             <NavLink to="/2">Сюда</NavLink>

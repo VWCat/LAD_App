@@ -8,7 +8,6 @@ type ErrorPropsType = {
 
 const StyledError = styled.img`
   width: 100%;
-  /* background-color: var(--sub-color); */
   display: flex;
   justify-content: space-between;
   align-items: center;

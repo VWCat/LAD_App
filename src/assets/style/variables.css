@@ -1,10 +1,10 @@
 :root {
   /* colors */
-  --main-color: #3c5280;
-  --sub-color: #272b33;
+  --main-color: #653c80;
+  --sub-color: #2f2733;
   --title-color: #ebf0fa;
   --text-color: rgb(128, 128, 128);
-  --active-color: aqua;
+  --active-color: rgb(85, 231, 41);
 
   /* fonts */
   --title-font: "Zen Kurenaido", sans-serif;
