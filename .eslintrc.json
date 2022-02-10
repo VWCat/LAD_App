@@ -25,7 +25,10 @@
       { "namedComponents": "arrow-function" }
     ],
     "import/extensions": "off",
-    "import/no-unresolved": "off"
+    "import/no-unresolved": "off",
+    "no-shadow": "off",
+    "no-unused-vars": "warn",
+    "default-param-last": "off"
   }
 }
 
@@ -49,5 +52,5 @@
 //     "no-unused-vars": "off",
 //     "no-console": "off",
 //     "no-shadow": "off",
-//     "default-param-last": "off"
+//
 //   }
