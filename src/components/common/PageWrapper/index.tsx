@@ -24,7 +24,6 @@ const StyledContent = styled.div`
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: row;
-  width: 100%;
   max-width: 1280px;
   padding: 60px 0;
   align-items: center;
@@ -34,10 +33,16 @@ const StyledContainer = styled.div`
 
 const StyledOutlet = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: calc(100% - 150px);
+
   justify-content: "center";
+  @media screen and (max-width: 900px) {
+    width: 100%;
+  }
 `;
+
+// const StyledSideBar = styled.div
 
 const PageWrapper: React.FC = () => {
   return (

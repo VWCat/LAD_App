@@ -7,6 +7,16 @@ import {
 
 const initialState: MemesReducerType = {
   memes: [] as OneMemeType[],
+  isLoading: false,
+  newMeme: {
+    id: "",
+    topText: "",
+    bottomText: "",
+  },
+  authMeme: {
+    user: "",
+    pass: "",
+  },
 };
 
 const MemesReducer = (
@@ -15,7 +25,13 @@ const MemesReducer = (
 ): MemesReducerType => {
   switch (action.type) {
     case MemesActionsType.fetchMemesData: {
-      return { ...state, memes: action.payload };
+      return { ...state, memes: action.payload, isLoading: false };
+    }
+    case MemesActionsType.setMemesLoadingTrue: {
+      return { ...state, isLoading: true };
+    }
+    case MemesActionsType.setMemesLoadingFalse: {
+      return { ...state, isLoading: false };
     }
     default:
       return state;

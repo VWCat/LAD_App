@@ -9,6 +9,10 @@ const StyledSideBar = styled.aside`
   justify-content: flex-start;
   align-items: center;
   padding: 10px;
+
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
 `;
 const StyledNav = styled.nav`
   ul {

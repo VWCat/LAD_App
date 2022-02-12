@@ -1,5 +1,10 @@
 import { RootReducerType } from "../types";
 
-const getMemesData = (state: RootReducerType) => state.memes.memes;
+export const getMemesData = (state: RootReducerType) => state.memes.memes;
 
-export default getMemesData;
+export const getMemesIsLoading = (state: RootReducerType) =>
+  state.memes.isLoading;
+
+export const getMemeAuth = (state: RootReducerType) => state.memes.authMeme;
+
+export const getNewMeme = (state: RootReducerType) => state.memes.newMeme;

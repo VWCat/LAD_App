@@ -1,21 +1,31 @@
-import axios, { AxiosRequestConfig } from "axios";
+import axios, { AxiosError, AxiosRequestConfig } from "axios";
 
-const makeRequest = async ({
+const makeMemesRequest = async ({
   method = "GET",
   url,
   data = {},
   params = {},
-}: AxiosRequestConfig) => {
+}: // eslint-disable-next-line consistent-return
+AxiosRequestConfig) => {
   try {
     const response = await axios({
       method,
       url,
       baseURL: "https://api.imgflip.com/",
     });
-    return response;
+
+    return { data: response.data.data.memes, status: response.status };
   } catch (e) {
-    return undefined;
+    return { data: [], status: e };
   }
+  // } catch (error: Ty) {
+  //   if (error.response) {
+  //     console.log(error.response.data);
+  //     console.log(error.response.status);
+  //     console.log(error.response.headers);
+  //   }
+  //
+  // }
 };
 
-export default makeRequest;
+export default makeMemesRequest;
