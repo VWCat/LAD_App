@@ -12,11 +12,14 @@ type InputPropsType = {
 const StyledInput = styled.div`
   display: flex;
   flex-direction: row;
-  width: 50%;
+  width: 100%;
   font-size: 24px;
-  align-self: last baseline;
+  span {
+    white-space: nowrap;
+  }
   input {
-    font-size: 24px;
+    width: 100%;
+    font-size: 20px;
     margin-bottom: 20px;
     margin-left: 20px;
   }
@@ -30,7 +33,7 @@ const Input: React.FC<InputPropsType> = (props) => {
 
   return (
     <StyledInput>
-      <span>{title}</span>
+      <span>{title}:</span>
       <input
         placeholder={placeholder}
         type={type}

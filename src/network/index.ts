@@ -1,31 +1,39 @@
-import axios, { AxiosError, AxiosRequestConfig } from "axios";
+import axios, { Method } from "axios";
 
-const makeMemesRequest = async ({
-  method = "GET",
-  url,
-  data = {},
-  params = {},
-}: // eslint-disable-next-line consistent-return
-AxiosRequestConfig) => {
+// const makeMemesRequest = async ({
+//   method = "GET",
+//   params = {},
+// }: // eslint-disable-next-line consistent-return
+// AxiosRequestConfig) => {
+
+const makeMemesRequest = async (method: Method = "GET", params: {} = {}) => {
   try {
-    const response = await axios({
+    const request: {
+      method: Method;
+      url: string;
+      baseURL: string;
+      params?: {};
+    } = {
       method,
-      url,
+      url: "get_memes",
       baseURL: "https://api.imgflip.com/",
-    });
+    };
 
-    return { data: response.data.data.memes, status: response.status };
+    if (method === "POST") {
+      request.url = "caption_image";
+      request.params = params;
+    }
+
+    const response = await axios(request);
+
+    return {
+      data: response.data.data.memes,
+      status: response.status,
+      success: response.data.success,
+    };
   } catch (e) {
-    return { data: [], status: e };
+    return { data: [], status: e, success: false };
   }
-  // } catch (error: Ty) {
-  //   if (error.response) {
-  //     console.log(error.response.data);
-  //     console.log(error.response.status);
-  //     console.log(error.response.headers);
-  //   }
-  //
-  // }
 };
 
 export default makeMemesRequest;

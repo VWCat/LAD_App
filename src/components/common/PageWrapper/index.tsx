@@ -35,8 +35,8 @@ const StyledOutlet = styled.div`
   display: flex;
   flex-direction: row;
   width: calc(100% - 150px);
+  justify-content: center;
 
-  justify-content: "center";
   @media screen and (max-width: 900px) {
     width: 100%;
   }

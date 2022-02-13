@@ -5,10 +5,9 @@ import { MemesActionsType, ActionsType, CreateMemeType } from "./types";
 export const fetchMemesDataAction = () => {
   return async (dispatch: Dispatch<ActionsType>) => {
     dispatch({ type: MemesActionsType.setMemesLoadingTrue });
-    const { data, status } = await makeMemesRequest({ url: "get_memes" });
-    console.log(status);
+    const { data, status, success } = await makeMemesRequest();
 
-    if (status === 200) {
+    if (success) {
       dispatch({ type: MemesActionsType.fetchMemesData, payload: data });
     } else {
       dispatch({ type: MemesActionsType.setMemesLoadingFalse });
@@ -24,31 +23,33 @@ export const postMemeDataAction = (
   bottomText: string
 ) => {
   return async (dispatch: Dispatch<ActionsType>) => {
-    dispatch({ type: MemesActionsType.setMemesLoadingTrue });
-    const { data, status } = await makeMemesRequest({
-      method: "POST",
-      url: "caption_image",
-      data: {
-        template_id: id,
-        username: user,
-        password: pass,
-        text0: topText,
-        text1: bottomText,
-      },
+    dispatch({ type: MemesActionsType.setMemeSendingTrue });
+    const { data, status, success } = await makeMemesRequest("POST", {
+      template_id: id,
+      username: user,
+      password: pass,
+      text0: topText,
+      text1: bottomText,
     });
     console.log(status);
 
-    if (status === 200) {
-      dispatch({ type: MemesActionsType.fetchMemesData, payload: data });
+    if (success) {
+      dispatch({ type: MemesActionsType.fetchNewMemeData, payload: data });
     } else {
-      dispatch({ type: MemesActionsType.setMemesLoadingFalse });
+      dispatch({ type: MemesActionsType.setMemeSendingFalse });
     }
   };
 };
 
 export const saveNewMemeDataAction = (newMeme: CreateMemeType) => {
   return {
-    type: MemesActionsType.saveNewMemeData,
+    type: MemesActionsType.setNewMemeData,
     payload: newMeme,
   };
 };
+
+// export const clearNewMemeAction = () => {
+//   return {
+//     type: MemesActionsType.clearNewMemeData,
+//   };
+// };

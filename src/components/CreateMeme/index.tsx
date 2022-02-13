@@ -1,54 +1,36 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
-import {
-  postMemeDataAction,
-  saveNewMemeDataAction,
-} from "../../store/Memes/actions";
-import { getMemeAuth, getNewMeme } from "../../store/Memes/selectors";
 import { OneMemeType } from "../../store/Memes/types";
 import Input from "../common/Input";
 
 type CreateMemePropsType = {
   meme: OneMemeType;
+  text: {
+    topText: string;
+    setTopText: Dispatch<SetStateAction<string>>;
+    bottomText: string;
+    setBottomText: Dispatch<SetStateAction<string>>;
+  };
+  createMemeHandler: () => void;
 };
 
 const StyledCreateMeme = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 50%;
   img {
-    width: 50%;
+    width: 100%;
     margin: 20px;
   }
 `;
 
 const CreateMeme: React.FC<CreateMemePropsType> = (props) => {
-  const { meme } = props;
-
-  const [topText, setTopText] = useState("");
-  const [bottomText, setBottomText] = useState("");
-
-  const auth = useSelector(getMemeAuth);
-  const newMeme = useSelector(getNewMeme);
-
-  const dispatch = useDispatch();
-
-  const createMemeHandler = () => {
-    if (auth.user) {
-      dispatch(
-        postMemeDataAction(meme.id, auth.user, auth.pass, topText, bottomText)
-      );
-    } else {
-      dispatch(
-        saveNewMemeDataAction({
-          id: meme.id,
-          topText,
-          bottomText,
-        })
-      );
-    }
-  };
+  const {
+    meme,
+    text: { topText, setTopText, bottomText, setBottomText },
+    createMemeHandler,
+  } = props;
 
   return (
     <StyledCreateMeme>
