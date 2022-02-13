@@ -31,18 +31,12 @@ export type CreateMemeType = {
   bottomText: string;
 };
 
-export type MemeAuthType = {
-  user: string;
-  pass: string;
-};
-
 export type MemesReducerType = {
   memes: OneMemeType[];
   myMemes: OneMyMemeType[];
   isLoading: boolean;
   isSending: boolean;
   newMeme: CreateMemeType;
-  authMeme: MemeAuthType;
 };
 
 type fetchMemesDataActionType = {

@@ -16,10 +16,6 @@ const initialState: MemesReducerType = {
     topText: "",
     bottomText: "",
   },
-  authMeme: {
-    user: "",
-    pass: "",
-  },
 };
 
 const MemesReducer = (

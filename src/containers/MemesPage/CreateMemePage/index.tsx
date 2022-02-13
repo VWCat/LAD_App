@@ -3,22 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useParams } from "react-router-dom";
 import CreateMeme from "../../../components/CreateMeme";
 import {
-  // clearNewMemeAction,
   postMemeDataAction,
   saveNewMemeDataAction,
 } from "../../../store/Memes/actions";
-import {
-  getMemeAuth,
-  getMemesData,
-  getNewMeme,
-} from "../../../store/Memes/selectors";
+import { getMemesData, getNewMeme } from "../../../store/Memes/selectors";
+import { getUser } from "../../../store/User/selectors";
 
 const CreateMemePage: React.FC = () => {
   const { id } = useParams();
 
   const dispatch = useDispatch();
 
-  const auth = useSelector(getMemeAuth);
+  const user = useSelector(getUser);
   const meme = useSelector(getMemesData).find((el) => el.id === id);
   const newMeme = useSelector(getNewMeme);
 
@@ -30,9 +26,9 @@ const CreateMemePage: React.FC = () => {
   );
 
   const createMemeHandler = () => {
-    if (auth.user) {
+    if (user.name) {
       dispatch(
-        postMemeDataAction(meme!.id, auth.user, auth.pass, topText, bottomText)
+        postMemeDataAction(meme!.id, user.name, user.pass, topText, bottomText)
       );
     } else {
       dispatch(

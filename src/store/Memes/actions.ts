@@ -5,7 +5,7 @@ import { MemesActionsType, ActionsType, CreateMemeType } from "./types";
 export const fetchMemesDataAction = () => {
   return async (dispatch: Dispatch<ActionsType>) => {
     dispatch({ type: MemesActionsType.setMemesLoadingTrue });
-    const { data, status, success } = await makeMemesRequest();
+    const { data, success } = await makeMemesRequest();
 
     if (success) {
       dispatch({ type: MemesActionsType.fetchMemesData, payload: data });
@@ -24,14 +24,13 @@ export const postMemeDataAction = (
 ) => {
   return async (dispatch: Dispatch<ActionsType>) => {
     dispatch({ type: MemesActionsType.setMemeSendingTrue });
-    const { data, status, success } = await makeMemesRequest("POST", {
+    const { data, success } = await makeMemesRequest("POST", {
       template_id: id,
       username: user,
       password: pass,
       text0: topText,
       text1: bottomText,
     });
-    console.log(status);
 
     if (success) {
       dispatch({ type: MemesActionsType.fetchNewMemeData, payload: data });
