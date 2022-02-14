@@ -1,11 +1,5 @@
 import axios, { Method } from "axios";
 
-// const makeMemesRequest = async ({
-//   method = "GET",
-//   params = {},
-// }: // eslint-disable-next-line consistent-return
-// AxiosRequestConfig) => {
-
 const makeMemesRequest = async (method: Method = "GET", params: {} = {}) => {
   try {
     const request: {
@@ -27,12 +21,10 @@ const makeMemesRequest = async (method: Method = "GET", params: {} = {}) => {
     const response = await axios(request);
 
     return {
-      data: response.data.data.memes,
-      status: response.status,
-      success: response.data.success,
+      data: response.data,
     };
   } catch (e) {
-    return { data: [], status: e, success: false };
+    return { data: [] };
   }
 };
 

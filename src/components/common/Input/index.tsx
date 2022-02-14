@@ -5,7 +5,7 @@ type InputPropsType = {
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
   placeholder: string;
-  type: string;
+  type: React.HTMLInputTypeAttribute | undefined;
   title: string;
 };
 

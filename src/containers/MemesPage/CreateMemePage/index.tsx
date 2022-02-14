@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import CreateMeme from "../../../components/CreateMeme";
 import {
   postMemeDataAction,
@@ -11,7 +11,7 @@ import { getUser } from "../../../store/User/selectors";
 
 const CreateMemePage: React.FC = () => {
   const { id } = useParams();
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const user = useSelector(getUser);
@@ -38,6 +38,7 @@ const CreateMemePage: React.FC = () => {
           bottomText,
         })
       );
+      navigate("/login");
     }
   };
 

@@ -1,6 +1,9 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { logOutUserDataAction } from "../../../store/User/actions";
+import { getUser } from "../../../store/User/selectors";
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -27,6 +30,9 @@ const StyledNav = styled.nav`
 `;
 
 const Header: React.FC = () => {
+  const user = useSelector(getUser);
+  const dispatch = useDispatch();
+
   return (
     <StyledHeader>
       <StyledLogo>
@@ -53,7 +59,19 @@ const Header: React.FC = () => {
           </li>
         </ul>
       </StyledNav>
-      HEADER
+      {user.name ? (
+        <div>
+          {user.name}
+          <button
+            type="button"
+            onClick={() => dispatch(logOutUserDataAction())}
+          >
+            ❌
+          </button>
+        </div>
+      ) : (
+        <NavLink to="/login">Войти</NavLink>
+      )}
     </StyledHeader>
   );
 };

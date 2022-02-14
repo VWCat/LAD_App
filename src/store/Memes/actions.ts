@@ -5,10 +5,13 @@ import { MemesActionsType, ActionsType, CreateMemeType } from "./types";
 export const fetchMemesDataAction = () => {
   return async (dispatch: Dispatch<ActionsType>) => {
     dispatch({ type: MemesActionsType.setMemesLoadingTrue });
-    const { data, success } = await makeMemesRequest();
+    const { data } = await makeMemesRequest();
 
-    if (success) {
-      dispatch({ type: MemesActionsType.fetchMemesData, payload: data });
+    if (data.success) {
+      dispatch({
+        type: MemesActionsType.fetchMemesData,
+        payload: data.data.memes,
+      });
     } else {
       dispatch({ type: MemesActionsType.setMemesLoadingFalse });
     }
@@ -24,7 +27,7 @@ export const postMemeDataAction = (
 ) => {
   return async (dispatch: Dispatch<ActionsType>) => {
     dispatch({ type: MemesActionsType.setMemeSendingTrue });
-    const { data, success } = await makeMemesRequest("POST", {
+    const { data } = await makeMemesRequest("POST", {
       template_id: id,
       username: user,
       password: pass,
@@ -32,10 +35,14 @@ export const postMemeDataAction = (
       text1: bottomText,
     });
 
-    if (success) {
-      dispatch({ type: MemesActionsType.fetchNewMemeData, payload: data });
+    if (data.success) {
+      dispatch({
+        type: MemesActionsType.fetchNewMemeData,
+        payload: { id, ...data.data },
+      });
     } else {
       dispatch({ type: MemesActionsType.setMemeSendingFalse });
+      alert(data.error_message);
     }
   };
 };
