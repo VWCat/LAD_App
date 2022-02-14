@@ -8,7 +8,9 @@ import {
 
 const initialState: MemesReducerType = {
   memes: [] as OneMemeType[],
-  myMemes: [] as OneMyMemeType[],
+  myMemes: localStorage.myMemes
+    ? [...JSON.parse(localStorage.myMemes).myMemesArr]
+    : ([] as OneMyMemeType[]),
   isLoading: false,
   isSending: false,
   newMeme: {
@@ -29,7 +31,7 @@ const MemesReducer = (
     case MemesActionsType.fetchNewMemeData: {
       return {
         ...state,
-        myMemes: [...state.myMemes, action.payload],
+        myMemes: [action.payload, ...state.myMemes],
         newMeme: initialState.newMeme,
         isSending: false,
       };

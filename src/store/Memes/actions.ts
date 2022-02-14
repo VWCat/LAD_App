@@ -1,6 +1,11 @@
 import { Dispatch } from "react";
 import makeMemesRequest from "../../network";
-import { MemesActionsType, ActionsType, CreateMemeType } from "./types";
+import {
+  MemesActionsType,
+  ActionsType,
+  CreateMemeType,
+  OneMyMemeType,
+} from "./types";
 
 export const fetchMemesDataAction = () => {
   return async (dispatch: Dispatch<ActionsType>) => {
@@ -36,6 +41,15 @@ export const postMemeDataAction = (
     });
 
     if (data.success) {
+      const newMyMeme: OneMyMemeType = { id, ...data.data };
+      const myMemes: { myMemesArr: OneMyMemeType[] } = {
+        myMemesArr: [newMyMeme],
+      };
+
+      if (localStorage.myMemes)
+        myMemes.myMemesArr.push(...JSON.parse(localStorage.myMemes).myMemesArr);
+
+      localStorage.setItem("myMemes", JSON.stringify(myMemes));
       dispatch({
         type: MemesActionsType.fetchNewMemeData,
         payload: { id, ...data.data },
