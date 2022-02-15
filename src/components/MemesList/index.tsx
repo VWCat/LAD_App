@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { OneMemeType } from "../../store/Memes/types";
+import { OneMemeType, OneMyMemeType } from "../../store/Memes/types";
 
 type MemesListPropsType = {
-  memes: OneMemeType[];
+  memes: OneMemeType[] | OneMyMemeType[];
 };
 
 const StyledMemesList = styled.ul`
@@ -31,11 +31,11 @@ const MemesList: React.FC<MemesListPropsType> = (props) => {
   const { memes } = props;
   return (
     <StyledMemesList>
-      {memes.map((el: OneMemeType) => (
+      {memes.map((el: OneMemeType | OneMyMemeType) => (
         <StyledMemeCard key={el.id}>
           <Link to={`/memes/${el.id}`}>
             <img src={el.url} alt={`Мемечик ${el.id}`} />
-            <p>{el.name}</p>
+            {"name" in el && <p>{el.name}</p>}
           </Link>
         </StyledMemeCard>
       ))}

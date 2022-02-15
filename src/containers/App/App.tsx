@@ -7,6 +7,7 @@ import LoginPage from "../LoginPage";
 import MainPage from "../MainPage";
 import MemesPage from "../MemesPage";
 import CreateMemePage from "../MemesPage/CreateMemePage";
+import MyMemesPage from "../MyMemesPage";
 import NotFoundPage from "../NotFoundPage";
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/" element={<MainPage />} />
         <Route path="/memes" element={<MemesPage />} />
         <Route path="/memes/:id" element={<CreateMemePage />} />
+        <Route path="/mymemes" element={<MyMemesPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
