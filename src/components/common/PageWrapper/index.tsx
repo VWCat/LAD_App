@@ -25,8 +25,8 @@ const StyledContainer = styled.div`
   display: flex;
   flex-direction: row;
   max-width: 1280px;
-  padding: 60px 0;
-  align-items: center;
+  padding: 60px 20px;
+  align-items: flex-start;
   justify-content: end;
   flex-grow: 1;
 `;

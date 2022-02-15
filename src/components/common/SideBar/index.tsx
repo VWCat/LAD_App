@@ -25,13 +25,13 @@ type SideBarPropsType = {
 };
 
 const SideBar: React.FC<SideBarPropsType> = (props) => {
-  const { caption = undefined, list } = props;
+  const { caption, list } = props;
 
   return (
     <>
       {caption}
       <StyledList>
-        {list.map((el) => (
+        {list.slice(0, 5).map((el) => (
           <li>
             <a href={el.page_url}>
               <img src={el.url} alt="My meme" />

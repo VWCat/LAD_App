@@ -37,7 +37,7 @@ const Header: React.FC = () => {
     <StyledHeader>
       <StyledLogo>
         <NavLink to="/">
-          <img src="/logo.png" alt="logo" />
+          <img src="/logo.svg" alt="logo" />
         </NavLink>
       </StyledLogo>
       <StyledNav>
