@@ -1,9 +1,9 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
+import SideBarContainer from "../../../containers/SideBarContainer";
 import Footer from "../Footer";
 import Header from "../Header";
-import SideBar from "../SideBar";
 
 const StyledPage = styled.div`
   display: flex;
@@ -42,9 +42,29 @@ const StyledOutlet = styled.div`
   }
 `;
 
+const StyledSideBar = styled.aside`
+  width: 150px;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  /* padding: 10px; */
+
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
+`;
+
 // const StyledSideBar = styled.div
 
-const PageWrapper: React.FC = () => {
+type PageWrapperPropsType = {
+  isSideBar: number;
+};
+
+const PageWrapper: React.FC<PageWrapperPropsType> = (props) => {
+  const { isSideBar } = props;
+
   return (
     <StyledPage>
       <Header />
@@ -53,7 +73,11 @@ const PageWrapper: React.FC = () => {
           <StyledOutlet>
             <Outlet />
           </StyledOutlet>
-          <SideBar />
+          {isSideBar && (
+            <StyledSideBar>
+              <SideBarContainer />
+            </StyledSideBar>
+          )}
         </StyledContainer>
       </StyledContent>
       <Footer />

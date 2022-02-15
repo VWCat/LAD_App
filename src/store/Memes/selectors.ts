@@ -6,3 +6,8 @@ export const getMemesIsLoading = (state: RootReducerType) =>
   state.memes.isLoading;
 
 export const getNewMeme = (state: RootReducerType) => state.memes.newMeme;
+
+export const getMyMemesData = (state: RootReducerType) => state.memes.myMemes;
+
+export const getMyMemesDatalength = (state: RootReducerType) =>
+  state.memes.myMemes.length;

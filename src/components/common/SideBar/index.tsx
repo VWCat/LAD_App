@@ -1,49 +1,46 @@
 import React from "react";
 import styled from "styled-components";
+import { OneMyMemeType } from "../../../store/Memes/types";
 
-const StyledSideBar = styled.aside`
-  width: 150px;
-  min-height: 100%;
+const StyledList = styled.ul`
+  width: 100%;
+  list-style: none;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 10px;
+  justify-content: space-between;
+  margin-top: 10px;
 
-  @media screen and (max-width: 900px) {
-    display: none;
-  }
-`;
-const StyledNav = styled.nav`
-  ul {
-    width: 100%;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 10px;
-  }
   li {
-    border: solid black 1px;
-    margin: 3px 0;
-    padding: 2px;
+    width: 100%;
+    margin: 5px 0;
+    img {
+      width: 150px;
+      object-fit: contain;
+    }
   }
 `;
+type SideBarPropsType = {
+  caption: string;
+  list: OneMyMemeType[];
+};
 
-const SideBar: React.FC = () => {
+const SideBar: React.FC<SideBarPropsType> = (props) => {
+  const { caption = undefined, list } = props;
+
   return (
-    <StyledSideBar>
-      SIDEBAR
-      <StyledNav>
-        <ul>
-          <li>Side content 1</li>
-          <li>Side content 2</li>
-          <li>Side content 3</li>
-          <li>Side content 4</li>
-          <li>Side content 5</li>
-        </ul>
-      </StyledNav>
-    </StyledSideBar>
+    <>
+      {caption}
+      <StyledList>
+        {list.map((el) => (
+          <li>
+            <a href={el.page_url}>
+              <img src={el.url} alt="My meme" />
+            </a>
+          </li>
+        ))}
+      </StyledList>
+    </>
   );
 };
+
 export default SideBar;
