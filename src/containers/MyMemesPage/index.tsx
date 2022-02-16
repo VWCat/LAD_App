@@ -8,17 +8,17 @@ import {
   getMyMemesDatalength,
 } from "../../store/Memes/selectors";
 
+const StyledMemesList = styled.ul`
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+`;
+
 const MyMemesPage: React.FC = () => {
   const isMemesExist = useSelector(getMyMemesDatalength);
 
   const myMemes = useSelector(getMyMemesData);
-
-  const StyledMemesList = styled.ul`
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  `;
 
   return (
     <div>

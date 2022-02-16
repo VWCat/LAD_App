@@ -20,7 +20,7 @@ export const fetchMemesDataAction = () => {
     ) {
       dispatch({
         type: MemesActionsType.fetchMemesData,
-        payload: data.data.memes,
+        payload: data.data.memes.filter((el) => el.box_count === 2),
       });
     } else {
       dispatch({ type: MemesActionsType.setMemesLoadingFalse });

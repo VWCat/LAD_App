@@ -34,20 +34,26 @@ const StyledMemeCard = styled.li`
 
 const CustomLink = ({
   to,
-  isRemote,
+  isExt,
   children,
 }: {
   to: string;
-  isRemote: boolean;
+  isExt: boolean;
   children: React.ReactNode;
 }) =>
-  isRemote ? <a href={to}>{children}</a> : <Link to={to}>{children}</Link>;
+  isExt ? (
+    <a href={to} target="_blank" rel="noreferrer">
+      {children}
+    </a>
+  ) : (
+    <Link to={to}>{children}</Link>
+  );
 
 const MemeCard: React.FC<MemeCardPropsType> = (props) => {
   const { src, url, name = "", size } = props;
   return (
     <StyledMemeCard isSmall={size === "small"}>
-      <CustomLink to={url} isRemote={/^https?:\/\//.test(url)}>
+      <CustomLink to={url} isExt={/^https?:\/\//.test(url)}>
         <img src={src} alt="Мемечик" />
         {name && <p>{name}</p>}
       </CustomLink>

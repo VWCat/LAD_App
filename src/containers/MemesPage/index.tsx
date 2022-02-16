@@ -5,6 +5,13 @@ import MemeCard from "../../components/MemeCard";
 import { fetchMemesDataAction } from "../../store/Memes/actions";
 import { getMemesData, getMemesIsLoading } from "../../store/Memes/selectors";
 
+const StyledMemesList = styled.ul`
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+`;
+
 const MemesPage: React.FC = () => {
   const isLoading = useSelector(getMemesIsLoading);
 
@@ -15,13 +22,6 @@ const MemesPage: React.FC = () => {
   useEffect(() => {
     dispatch(fetchMemesDataAction());
   }, []);
-
-  const StyledMemesList = styled.ul`
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  `;
 
   return (
     <div>

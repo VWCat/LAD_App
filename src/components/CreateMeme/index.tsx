@@ -39,16 +39,16 @@ const CreateMeme: React.FC<CreateMemePropsType> = (props) => {
       <Input
         value={topText}
         setValue={setTopText}
-        placeholder="Введите подпись для верхней части мема"
+        placeholder="Введите первый текст"
         type="text"
-        title="Top Text"
+        title="First Text"
       />
       <Input
         value={bottomText}
         setValue={setBottomText}
-        placeholder="Введите подпись для нижней части мема"
+        placeholder="Введите второй текст"
         type="text"
-        title="Bottom Text"
+        title="Second Text"
       />
       <button onClick={createMemeHandler} type="submit">
         Создать мемасик
