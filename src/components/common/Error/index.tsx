@@ -1,34 +1,46 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 type ErrorPropsType = {
   imgURL: string;
   errCode: number;
+  goBackHandler: () => void;
 };
 
-const StyledError = styled.img`
-  width: 100%;
+const StyledError = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
   align-items: center;
-  padding: 50px 50px;
+  img {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 50px;
+    object-fit: contain;
+  }
+  button {
+    width: 300px;
+    background-color: var(--main-color);
+    border: 1px solid var(--title-color);
+    padding: 5px 50px;
+    text-align: center;
+    color: var(--title-color);
+    font-size: calc(var(--text-size) - 6px);
+  }
 `;
 
 const Error: React.FC<ErrorPropsType> = (props) => {
-  const { imgURL, errCode } = props;
-
-  const nav = useNavigate();
-  const goBack = () => nav(-1);
+  const { imgURL, errCode, goBackHandler } = props;
 
   return (
-    <>
-      <StyledError src={imgURL} alt={`Error ${errCode}`} />
-      <button type="button" onClick={goBack}>
+    <StyledError>
+      <img src={imgURL} alt={`Error ${errCode}`} />
+      <button type="button" onClick={goBackHandler}>
         Назад
       </button>
-      ;
-    </>
+    </StyledError>
   );
 };
 export default Error;

@@ -20,6 +20,7 @@ const StyledContent = styled.div`
   // align-items: center;
   justify-content: center;
   flex-grow: 1;
+  overflow-y: auto;
 `;
 const StyledContainer = styled.div`
   display: flex;
@@ -36,6 +37,8 @@ const StyledOutlet = styled.div`
   flex-direction: row;
   width: calc(100% - 150px);
   justify-content: center;
+  height: 1px;
+  min-height: 100%;
 
   @media screen and (max-width: 900px) {
     width: 100%;

@@ -9,6 +9,7 @@ type MemeCardPropsType = {
   url: string;
   name: string;
   size: "big" | "small";
+  // eslint-disable-next-line react/no-unused-prop-types
   key: string;
 };
 
@@ -43,9 +44,9 @@ const CustomLink = ({
   isRemote ? <a href={to}>{children}</a> : <Link to={to}>{children}</Link>;
 
 const MemeCard: React.FC<MemeCardPropsType> = (props) => {
-  const { src, url, name = "", size, key } = props;
+  const { src, url, name = "", size } = props;
   return (
-    <StyledMemeCard isSmall={size === "small"} key={key}>
+    <StyledMemeCard isSmall={size === "small"}>
       <CustomLink to={url} isRemote={/^https?:\/\//.test(url)}>
         <img src={src} alt="Мемечик" />
         {name && <p>{name}</p>}
