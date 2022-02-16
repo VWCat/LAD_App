@@ -12,7 +12,12 @@ export const fetchMemesDataAction = () => {
     dispatch({ type: MemesActionsType.setMemesLoadingTrue });
     const { data } = await makeMemesRequest();
 
-    if (data.success) {
+    if (
+      data.success &&
+      "data" in data &&
+      data.data instanceof Object &&
+      "memes" in data.data
+    ) {
       dispatch({
         type: MemesActionsType.fetchMemesData,
         payload: data.data.memes,
@@ -40,8 +45,16 @@ export const postMemeDataAction = (
       text1: bottomText,
     });
 
-    if (data.success) {
-      const newMyMeme: OneMyMemeType = { id, ...data.data };
+    if (
+      data.success &&
+      "data" in data &&
+      data.data instanceof Object &&
+      "page_url" in data.data
+    ) {
+      const newMyMeme: OneMyMemeType = {
+        id: data.data.page_url.slice(data.data.page_url.lastIndexOf("/")),
+        ...data.data,
+      };
       const myMemes: { myMemesArr: OneMyMemeType[] } = {
         myMemesArr: [newMyMeme],
       };

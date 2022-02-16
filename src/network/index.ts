@@ -1,6 +1,16 @@
 import axios, { Method } from "axios";
+import { OneMemeType } from "../store/Memes/types";
 
-const makeMemesRequest = async (method: Method = "GET", params: {} = {}) => {
+const makeMemesRequest = async (
+  method: Method = "GET",
+  params: {} = {}
+): Promise<{
+  data: {
+    success: boolean;
+    error_message?: string;
+    data?: { url: string; page_url: string } | { memes: OneMemeType[] };
+  };
+}> => {
   try {
     const request: {
       method: Method;
@@ -24,7 +34,7 @@ const makeMemesRequest = async (method: Method = "GET", params: {} = {}) => {
       data: response.data,
     };
   } catch (e) {
-    return { data: [] };
+    return { data: { success: false, error_message: (e as Error).toString() } };
   }
 };
 

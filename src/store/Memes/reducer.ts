@@ -4,6 +4,7 @@ import {
   MemesReducerType,
   MemesActionsType,
   OneMyMemeType,
+  CreateMemeType,
 } from "./types";
 
 const initialState: MemesReducerType = {
@@ -13,11 +14,7 @@ const initialState: MemesReducerType = {
     : ([] as OneMyMemeType[]),
   isLoading: false,
   isSending: false,
-  newMeme: {
-    id: "",
-    topText: "",
-    bottomText: "",
-  },
+  newMeme: {} as CreateMemeType,
 };
 
 const MemesReducer = (
