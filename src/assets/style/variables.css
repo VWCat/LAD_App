@@ -3,7 +3,7 @@
   --main-color: #653c80;
   --sub-color: #2f2733;
   --title-color: #ebf0fa;
-  --text-color: rgb(128, 128, 128);
+  --text-color: rgb(160, 160, 160);
   --active-color: rgb(85, 231, 41);
 
   /* fonts */
@@ -11,7 +11,7 @@
   --text-font: "Poiret One", cursive;
 
   /* vars */
-  --title-size: 36px;
-  --subtitle-size: 24px;
-  --text-size: 18px;
+  --title-size: 40px;
+  --subtitle-size: 30px;
+  --text-size: 22px;
 }

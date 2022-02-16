@@ -13,6 +13,13 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 0 50px;
+  button {
+    background-color: var(--sub-color); /* Green */
+    border: none;
+    padding: 6px;
+    text-align: center;
+    font-size: calc(var(--text-size) - 6px);
+  }
 `;
 const StyledLogo = styled.div`
   img {
@@ -22,7 +29,8 @@ const StyledLogo = styled.div`
 `;
 const StyledNav = styled.nav`
   ul {
-    width: 400px;
+    width: 500px;
+    margin: 0 20px;
     list-style: none;
     display: flex;
     justify-content: space-between;
@@ -46,16 +54,10 @@ const Header: React.FC = () => {
             <NavLink to="/">Домой</NavLink>
           </li>
           <li>
-            <NavLink to="/memes">Мемасики</NavLink>
+            <NavLink to="/memes">Создать мемасик</NavLink>
           </li>
           <li>
-            <NavLink to="/2">Сюда</NavLink>
-          </li>
-          <li>
-            <NavLink to="/3">Ещё тудее</NavLink>
-          </li>
-          <li>
-            <NavLink to="/4">Ещё сюдее</NavLink>
+            <NavLink to="/mymemes">Мои мемасики</NavLink>
           </li>
         </ul>
       </StyledNav>
