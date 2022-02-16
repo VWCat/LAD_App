@@ -13,12 +13,16 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 0 50px;
+  .user {
+    display: flex;
+    justify-content: end;
+  }
   button {
-    background-color: var(--sub-color); /* Green */
+    width: 24px;
+    height: 24px;
+    background-color: var(--sub-color);
     border: none;
-    padding: 6px;
-    text-align: center;
-    font-size: calc(var(--text-size) - 6px);
+    margin-left: 5px;
   }
 `;
 const StyledLogo = styled.div`
@@ -62,13 +66,13 @@ const Header: React.FC = () => {
         </ul>
       </StyledNav>
       {user.name ? (
-        <div>
+        <div className="user">
           {user.name}
           <button
             type="button"
             onClick={() => dispatch(logOutUserDataAction())}
           >
-            ❌
+            <img src="/logout.svg" alt="exit" />
           </button>
         </div>
       ) : (
