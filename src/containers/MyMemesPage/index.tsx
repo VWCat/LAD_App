@@ -1,7 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import MemesList from "../../components/MemesList";
+import styled from "styled-components";
+import MemeCard from "../../components/MemeCard";
 import {
   getMyMemesData,
   getMyMemesDatalength,
@@ -12,10 +13,27 @@ const MyMemesPage: React.FC = () => {
 
   const myMemes = useSelector(getMyMemesData);
 
+  const StyledMemesList = styled.ul`
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  `;
+
   return (
     <div>
       {isMemesExist ? (
-        <MemesList memes={myMemes} />
+        <StyledMemesList>
+          {myMemes.map((el) => (
+            <MemeCard
+              src={el.url}
+              url={el.page_url}
+              name=""
+              size="big"
+              key={el.id}
+            />
+          ))}
+        </StyledMemesList>
       ) : (
         <>
           <p>У Вас ещё нет Мемасиков :(</p>

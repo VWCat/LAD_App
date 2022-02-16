@@ -11,7 +11,7 @@ import MyMemesPage from "../MyMemesPage";
 import NotFoundPage from "../NotFoundPage";
 
 const App = () => {
-  const isSideBar = useSelector(getMyMemesDatalength);
+  const isSideBar = !!useSelector(getMyMemesDatalength);
   return (
     <Routes>
       <Route path="/" element={<PageWrapper isSideBar={isSideBar} />}>

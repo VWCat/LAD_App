@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
-import SideBarContainer from "../../../containers/SideBarContainer";
+import SideBar from "../../../containers/SideBar";
 import Footer from "../Footer";
 import Header from "../Header";
 
@@ -27,7 +27,7 @@ const StyledContainer = styled.div`
   max-width: 1280px;
   padding: 60px 20px;
   align-items: flex-start;
-  justify-content: end;
+  justify-content: center;
   flex-grow: 1;
 `;
 
@@ -59,7 +59,7 @@ const StyledSideBar = styled.aside`
 // const StyledSideBar = styled.div
 
 type PageWrapperPropsType = {
-  isSideBar: number;
+  isSideBar: boolean;
 };
 
 const PageWrapper: React.FC<PageWrapperPropsType> = (props) => {
@@ -75,7 +75,7 @@ const PageWrapper: React.FC<PageWrapperPropsType> = (props) => {
           </StyledOutlet>
           {isSideBar && (
             <StyledSideBar>
-              <SideBarContainer />
+              <SideBar />
             </StyledSideBar>
           )}
         </StyledContainer>
