@@ -36,9 +36,6 @@ const MemesReducer = (
     case MemesActionsType.setNewMemeData: {
       return { ...state, newMeme: action.payload };
     }
-    // case MemesActionsType.clearNewMemeData: {
-    //   return { ...state, newMeme: initialState.newMeme };
-    // }
     case MemesActionsType.setMemesLoadingTrue: {
       return { ...state, isLoading: true };
     }

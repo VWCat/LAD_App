@@ -28,7 +28,14 @@ const CreateMemePage: React.FC = () => {
   const createMemeHandler = () => {
     if (user.name) {
       dispatch(
-        postMemeDataAction(meme!.id, user.name, user.pass, topText, bottomText)
+        postMemeDataAction(
+          meme!.id,
+          user.name,
+          user.pass,
+          topText,
+          bottomText,
+          navigate
+        )
       );
     } else {
       dispatch(

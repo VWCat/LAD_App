@@ -1,4 +1,5 @@
 import { Dispatch } from "react";
+import { NavigateFunction } from "react-router-dom";
 import makeMemesRequest from "../../network";
 import {
   MemesActionsType,
@@ -33,10 +34,12 @@ export const postMemeDataAction = (
   user: string,
   pass: string,
   topText: string,
-  bottomText: string
+  bottomText: string,
+  navigate: NavigateFunction
 ) => {
   return async (dispatch: Dispatch<ActionsType>) => {
     dispatch({ type: MemesActionsType.setMemeSendingTrue });
+
     const { data } = await makeMemesRequest("POST", {
       template_id: id,
       username: user,
@@ -52,7 +55,7 @@ export const postMemeDataAction = (
       "page_url" in data.data
     ) {
       const newMyMeme: OneMyMemeType = {
-        id: data.data.page_url.slice(data.data.page_url.lastIndexOf("/")),
+        id: data.data.page_url.slice(data.data.page_url.lastIndexOf("/") + 1),
         ...data.data,
       };
       const myMemes: { myMemesArr: OneMyMemeType[] } = {
@@ -63,10 +66,13 @@ export const postMemeDataAction = (
         myMemes.myMemesArr.push(...JSON.parse(localStorage.myMemes).myMemesArr);
 
       localStorage.setItem("myMemes", JSON.stringify(myMemes));
+
       dispatch({
         type: MemesActionsType.fetchNewMemeData,
-        payload: { id, ...data.data },
+        payload: newMyMeme,
       });
+
+      navigate("/mymemes");
     } else {
       dispatch({ type: MemesActionsType.setMemeSendingFalse });
       alert(data.error_message);
