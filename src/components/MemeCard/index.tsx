@@ -15,20 +15,26 @@ type MemeCardPropsType = {
 
 type StyledMemeCardPropsType = { isSmall: boolean };
 
-const StyledMemeCard = styled.li`
-  height: ${(props: StyledMemeCardPropsType) =>
-    props.isSmall ? "auto" : "240px"};
-  width: ${(props: StyledMemeCardPropsType) =>
-    props.isSmall ? "150px" : "200px"};
+const StyledMemeCard = styled.li<StyledMemeCardPropsType>`
+  height: ${(p) => (p.isSmall ? "auto" : "240px")};
+  width: ${(p) => (p.isSmall ? "150px" : "200px")};
   margin: 20px;
   justify-content: center;
   text-align: center;
   img {
-    height: ${(props: StyledMemeCardPropsType) =>
-      props.isSmall ? "auto" : "200px"};
-    width: ${(props: StyledMemeCardPropsType) =>
-      props.isSmall ? "150px" : "200px"};
+    height: ${(p) => (p.isSmall ? "auto" : "200px")};
+    width: ${(p) => (p.isSmall ? "150px" : "200px")};
     object-fit: contain;
+  }
+
+  @media screen and (max-width: 768px) {
+    height: 160px;
+    width: 120px;
+    margin: 5px;
+    img {
+      height: 120px;
+      width: 120px;
+    }
   }
 `;
 

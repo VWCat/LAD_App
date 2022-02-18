@@ -13,16 +13,10 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 0 50px;
-  .user {
-    display: flex;
-    justify-content: end;
-  }
-  button {
-    width: 24px;
-    height: 24px;
-    background-color: var(--sub-color);
-    border: none;
-    margin-left: 5px;
+
+  @media only screen and (max-width: 768px) {
+    min-height: 50px;
+    padding: 0 5px;
   }
 `;
 const StyledLogo = styled.div`
@@ -30,14 +24,52 @@ const StyledLogo = styled.div`
     width: 50px;
     height: 50px;
   }
+  @media only screen and (max-width: 768px) {
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
 `;
 const StyledNav = styled.nav`
+  display: flex;
+  width: 100%;
   ul {
-    width: 500px;
+    width: 100%;
     margin: 0 20px;
     list-style: none;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+  }
+  @media only screen and (max-width: 768px) {
+    ul {
+      margin: 0 5px;
+    }
+  }
+`;
+
+const StyledUser = styled.div`
+  display: flex;
+  justify-content: end;
+
+  button {
+    width: 24px;
+    height: 24px;
+    background-color: var(--sub-color);
+    border: none;
+    margin-left: 5px;
+    padding: 0;
+  }
+
+  @media only screen and (max-width: 768px) {
+    button {
+      width: 16px;
+      height: 16px;
+      img {
+        width: 16px;
+        height: 16px;
+      }
+    }
   }
 `;
 
@@ -65,19 +97,21 @@ const Header: React.FC = () => {
           </li>
         </ul>
       </StyledNav>
-      {user.name ? (
-        <div className="user">
-          {user.name}
-          <button
-            type="button"
-            onClick={() => dispatch(logOutUserDataAction())}
-          >
-            <img src="/logout.svg" alt="exit" />
-          </button>
-        </div>
-      ) : (
-        <NavLink to="/login">Войти</NavLink>
-      )}
+      <StyledUser>
+        {user.name ? (
+          <>
+            {user.name}
+            <button
+              type="button"
+              onClick={() => dispatch(logOutUserDataAction())}
+            >
+              <img src="/logout.svg" alt="exit" />
+            </button>
+          </>
+        ) : (
+          <NavLink to="/login">Войти</NavLink>
+        )}
+      </StyledUser>
     </StyledHeader>
   );
 };

@@ -1,4 +1,6 @@
 :root {
+  /* Page sizes */
+  --true-vh: 1vh;
   /* colors */
   --main-color: #653c80;
   --sub-color: #2f2733;
@@ -10,8 +12,17 @@
   --title-font: "Zen Kurenaido", sans-serif;
   --text-font: "Poiret One", cursive;
 
-  /* vars */
+  /* fonts sizes */
   --title-size: 40px;
   --subtitle-size: 30px;
   --text-size: 22px;
+}
+
+@media only screen and (max-width: 768px) {
+  :root {
+    /* fonts sizes */
+    --title-size: 30px;
+    --subtitle-size: 20px;
+    --text-size: 14px;
+  }
 }

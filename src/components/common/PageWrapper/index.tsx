@@ -5,11 +5,16 @@ import SideBar from "../../../containers/SideBar";
 import Footer from "../Footer";
 import Header from "../Header";
 
+type StyledPagePropsType = { viewPortHeight: number };
+
 const StyledPage = styled.div`
+  --true-vh: ${(props: StyledPagePropsType) => props.viewPortHeight / 100};
+
   display: flex;
   flex-direction: column;
   max-width: 100vw;
   height: 100vh;
+  height: calc(var(--true-vh) * 100px);
   justify-content: space-between;
   align-items: center;
 `;
@@ -40,7 +45,7 @@ const StyledOutlet = styled.div`
   height: 1px;
   min-height: 100%;
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 768px) {
     width: 100%;
   }
 `;
@@ -54,7 +59,7 @@ const StyledSideBar = styled.aside`
   align-items: center;
   /* padding: 10px; */
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 768px) {
     display: none;
   }
 `;
@@ -63,13 +68,14 @@ const StyledSideBar = styled.aside`
 
 type PageWrapperPropsType = {
   isSideBar: boolean;
+  viewPortHeight: number;
 };
 
 const PageWrapper: React.FC<PageWrapperPropsType> = (props) => {
-  const { isSideBar } = props;
+  const { isSideBar, viewPortHeight } = props;
 
   return (
-    <StyledPage>
+    <StyledPage viewPortHeight={viewPortHeight}>
       <Header />
       <StyledContent>
         <StyledContainer>

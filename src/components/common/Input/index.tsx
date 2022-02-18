@@ -13,15 +13,23 @@ const StyledInput = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-  font-size: 24px;
+  font-size: var(--text-size);
   span {
     white-space: nowrap;
   }
   input {
     width: 100%;
-    font-size: 20px;
+    font-size: var(--text-size);
     margin-bottom: 20px;
     margin-left: 20px;
+  }
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    input {
+      margin: 5px 0;
+      /* margin-top: 5px;
+      margin-left: 0; */
+    }
   }
 `;
 
