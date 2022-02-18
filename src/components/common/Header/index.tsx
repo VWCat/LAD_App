@@ -13,6 +13,7 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 0 50px;
+  font-weight: bold;
 
   @media only screen and (max-width: 768px) {
     min-height: 50px;
